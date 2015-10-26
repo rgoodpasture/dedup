@@ -1,3 +1,18 @@
+/**
+ * Main.java
+ *
+ * Builds a list of leads. Creates a logger.
+ *
+ * Creates a LeadDeduper with the logger.
+ *
+ * Feeds leads to deduper.
+ *
+ * Logs final list of deduplicated leads.
+ *
+ * @author Ryan Goodpasture - ryan.goodpasture@gmail.com
+ *
+ */
+
 package com.marketo;
 
 import java.util.ArrayList;
@@ -12,7 +27,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < leads.size(); i++) {
-            sb.append(leads.get(i).toString()).append('\n');
+            sb.append(leads.get(i)).append('\n');
         }
 
         logger.info(sb.toString());

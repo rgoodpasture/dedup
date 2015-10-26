@@ -1,17 +1,10 @@
-/*
+/**
  * Lead.java
  *
- * created on: 10/20/15 4:45 PM
- * Copyright(c) 2002-2015 Thetus Corporation.  All Rights Reserved.
- *                        www.thetus.com
+ * A Lead object is a representation of a marketing lead
  *
- * Use of copyright notice does not imply publication or disclosure.
- * THIS SOFTWARE CONTAINS CONFIDENTIAL AND PROPRIETARY INFORMATION CONSTITUTING VALUABLE TRADE SECRETS
- *  OF THETUS CORPORATION, AND MAY NOT BE:
- *  (a) DISCLOSED TO THIRD PARTIES;
- *  (b) COPIED IN ANY FORM;
- *  (c) USED FOR ANY PURPOSE EXCEPT AS SPECIFICALLY PERMITTED IN WRITING BY THETUS CORPORATION.
  */
+
 package com.marketo;
 
 import java.text.DateFormat;
@@ -20,11 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * A Lead object is a representation of a marketing lead
- *
- * @author Ryan Goodpasture - rgoodpasture@thetus.com
- */
+
 class Lead {
 
     public int    id;

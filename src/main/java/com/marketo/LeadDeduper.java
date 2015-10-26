@@ -1,16 +1,11 @@
 /*
  * LeadDeduper.java
  *
- * created on: 10/20/15 4:54 PM
- * Copyright(c) 2002-2015 Thetus Corporation.  All Rights Reserved.
- *                        www.thetus.com
+ * Maintains a list of leads. Allows adding leads. Added leads will be deduplicated.
+ * Changes are logged to a given logger.
  *
- * Use of copyright notice does not imply publication or disclosure.
- * THIS SOFTWARE CONTAINS CONFIDENTIAL AND PROPRIETARY INFORMATION CONSTITUTING VALUABLE TRADE SECRETS
- *  OF THETUS CORPORATION, AND MAY NOT BE:
- *  (a) DISCLOSED TO THIRD PARTIES;
- *  (b) COPIED IN ANY FORM;
- *  (c) USED FOR ANY PURPOSE EXCEPT AS SPECIFICALLY PERMITTED IN WRITING BY THETUS CORPORATION.
+ * @author Ryan Goodpasture - ryan.goodpasture@gmail.com
+ *
  */
 package com.marketo;
 
@@ -19,12 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.logging.Logger;
-
-/**
- * Deduplicates a list of leads, logging changes to a given logger
- *
- * @author Ryan Goodpasture - rgoodpasture@thetus.com
- */
 
 public class LeadDeduper {
 
@@ -37,7 +26,16 @@ public class LeadDeduper {
         this.logger = logger;
     }
 
-    //
+    /**
+     * Update an existing lead in the set with data from a new lead record.
+     * The update will only occur if the new lead has a later date or the same date as the existing lead.
+     * The new lead is assumed to have been matched with the existing lead.
+     * All changes are logged with the logger, both on a record and field level.
+     *
+     * @param newLead      The new lead
+     * @param existingLead The lead to be updated.
+    **/
+
     private void updateLeadData (Lead newLead, Lead existingLead) {
 
         if (0 >= existingLead.entryDate.compareTo(newLead.entryDate)) {
@@ -75,7 +73,14 @@ public class LeadDeduper {
         }
     }
 
-    //Parhaps maintain a separate TreeSet sorted by email to speed this part up for large data sets.
+
+    /**
+     * Search the set of existing leads for one that has the given email.
+     * Note: It might be possible to speed this up by maintaining a separate TreeSet sorted by email.
+     *
+     * @param email      The email address to match
+     * @return The Lead which matches the given email, or null if no match was found.
+     **/
     @SuppressWarnings("CastToConcreteClass")
     public Lead findEmailMatch (String email) {
 
@@ -89,6 +94,16 @@ public class LeadDeduper {
         return null;
     }
 
+
+    /**
+     * Incorporate a new lead into the current set.
+     * Try to match an existing lead on id and email fields.
+     * If a match is found, update the existing lead.
+     * If no match is found, add a new lead.
+     *
+     * @param lead      The lead to add to the set
+     *
+     **/
     public void addLead (Lead lead) {
 
         if (!leads.contains(lead)) {
@@ -123,6 +138,11 @@ public class LeadDeduper {
         }
     }
 
+    /**
+     * Return the current set of leads as a list
+     *
+     * @return an ArrayList of {@link Lead} objects
+     */
     public List<Lead> getLeads() {
         return new ArrayList<Lead>(leads);
     }

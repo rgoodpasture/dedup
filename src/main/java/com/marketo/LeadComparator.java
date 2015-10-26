@@ -1,26 +1,16 @@
-/*
+/**
  * LeadComparator.java
  *
- * created on: 10/20/15 5:04 PM
- * Copyright(c) 2002-2015 Thetus Corporation.  All Rights Reserved.
- *                        www.thetus.com
+ * Compares two leads on id field.
  *
- * Use of copyright notice does not imply publication or disclosure.
- * THIS SOFTWARE CONTAINS CONFIDENTIAL AND PROPRIETARY INFORMATION CONSTITUTING VALUABLE TRADE SECRETS
- *  OF THETUS CORPORATION, AND MAY NOT BE:
- *  (a) DISCLOSED TO THIRD PARTIES;
- *  (b) COPIED IN ANY FORM;
- *  (c) USED FOR ANY PURPOSE EXCEPT AS SPECIFICALLY PERMITTED IN WRITING BY THETUS CORPORATION.
+ * @author Ryan Goodpasture - ryan.goodpasture@gmail.com
+ *
  */
+
 package com.marketo;
 
 import java.util.Comparator;
 
-/**
- * TODO - add class description here
- *
- * @author [Your name here] - rgoodpasture@thetus.com
- */
 public class LeadComparator implements Comparator<Lead> {
 
     @Override
